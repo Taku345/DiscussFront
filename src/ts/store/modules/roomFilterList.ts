@@ -1,17 +1,12 @@
 import axios, { AxiosResponse } from 'axios';
 import { Room } from '../../../types/apiTypes';
-import { RoomFilter, RoomFilterList } from '../../../types/types';
+import { RoomFilterList } from '../../../types/types';
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
-
-const apiURL = "https://takuma432.shop";
-// const apiURL = "http://localhost"
-// const apiURL = "http://127.0.0.1:8000"
 
 const initRoomFilterList = createAsyncThunk<Room[]>(
   'initRoomFilterList/get',
   async (_payload) => {
-    // const res: AxiosResponse<Room[]> = await axios.get<Room[]>(`http://localhost/api/rooms`);
-    const res: AxiosResponse<Room[]> = await axios.get<Room[]>(`${apiURL}/api/rooms`); //そもそもtsxが読み込めないのでここは後で
+    const res: AxiosResponse<Room[]> = await axios.get<Room[]>(`${import.meta.env.VITE_API_URL}/api/rooms`);
     return res.data;
   }
 )
