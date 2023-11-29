@@ -14,9 +14,9 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
-    // hmr: {
-    //   host: '127.0.0.1:8000',
-    // },
+    hmr: {
+      host: 'https://www.takuma432.shop',
+    },
     host: true
   },
 })
