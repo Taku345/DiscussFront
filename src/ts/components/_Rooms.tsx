@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { Room } from '../../types/apiTypes'
-import { Button } from '@material-ui/core';
 
 const Rooms: React.FC = () => {
 

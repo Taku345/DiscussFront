@@ -8,9 +8,13 @@ import { Provider } from 'react-redux';
 import store from './store';
 import LeftDrawer, { DrawerHeader } from './components/LeftDrawer';
 import { Box, CssBaseline } from '@mui/material';
+import LoginTest from './components/LoginTest';
+import axios from 'axios';
+import Rooms from './components/Rooms';
 
 const Index: React.FC = () => {
 
+  // Laravelのbladeに読み込ませていたときの処理、もう使わない可能性大
   // const metaCsrfToken = document.querySelector("meta[name='csrf-token']") as HTMLMetaElement;
   // const csrfToken = useRef<string>(metaCsrfToken.content);
 
@@ -22,7 +26,9 @@ const Index: React.FC = () => {
           <LeftDrawer />
           <Box component="main" sx={{ flexGrow: 1, p: 3 }} className='FlexChild1' >
             <DrawerHeader />
-            <Home />
+            {/* <Home /> */}
+            {/* <Rooms /> */}
+            <LoginTest />
           </Box>
         </Box>
       </Provider>

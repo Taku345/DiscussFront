@@ -13,7 +13,7 @@ export class Room {
   id: string = '';
   user_id: string = '';
   name: string = '';
-  discription: string = '';
+  description: string = '';
   started_at: string = ''; // 日時の文字列として扱う場合、ISO 8601 形式などに変換する必要
   finished_at: string = '';
   created_at: string = '';
@@ -21,7 +21,17 @@ export class Room {
   deleted_at: Boolean | null = null; // もしnullを許容する場合
 }
 
-
+export class User {
+  id: string = '';
+  name: string = '';
+  email: string = '';
+  email_verified_at: string = '';
+  password: string = '';
+  remember_token: string = '';
+  created_at: string = '';
+  updated_at: string = '';
+  deleted_at: Boolean | null = null;
+}
 
 
 
