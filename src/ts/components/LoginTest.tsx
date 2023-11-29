@@ -81,6 +81,7 @@ export default function LoginTest() {
         <input type="text" value={email} onChange={onChangeEmail} />
         <label>password</label>
         <input type="password" value={password} onChange={onChangePassword} />
+        <p>なんとかなれー</p>
       </div>
       <div>
         {
