@@ -26,7 +26,7 @@ export default function LoginTest() {
   }
   const logout = () => { }
   const getUsers = () => {
-    axios.get<User[]>(`${import.meta.env.VITE_API_URL}/api/users`).then((res: AxiosResponse<User[]>) => {
+    http.get<User[]>(`${import.meta.env.VITE_API_URL}/api/users`).then((res: AxiosResponse<User[]>) => {
       setUsers(res.data);
     })
   }
