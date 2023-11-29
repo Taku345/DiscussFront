@@ -8,6 +8,7 @@ export default function LoginTest() {
   const http = axios.create({
     baseURL: `${import.meta.env.VITE_API_URL}`,
     withCredentials: true,
+    withXSRFToken: true
   });
 
   const [email, setEmail] = useState('test@test.com');
