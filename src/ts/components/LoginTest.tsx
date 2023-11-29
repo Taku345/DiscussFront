@@ -19,7 +19,7 @@ export default function LoginTest() {
     http.get('/sanctum/csrf-cookie').then((res) => {
       console.log("自分のログGET/sanctum/csrf-cookie", res)
       console.log('自分のログ', email, password, res.data.csrfToken)
-      http.post('/api/login', { email, password }, { withCredentials: true }).then((res) => {
+      http.post('/api/login', { email, password }).then((res) => {
         console.log("自分のログ:post res", res);
       })
     })
@@ -43,7 +43,7 @@ export default function LoginTest() {
     e.preventDefault();
     const newRoom = {
       user_id: 1,
-      name: 'reactルーム作成テスト',
+      name: 'react11/29ルーム作成テスト',
       description: 'reactルーム作成テスト説明文',
       started_at: new Date().toLocaleString('sv-SE'),
       finished_at: new Date().toLocaleString('sv-SE'),
@@ -52,7 +52,7 @@ export default function LoginTest() {
       const res: AxiosResponse<Room> = await axios.post<Room>(`${import.meta.env.VITE_API_URL}/api/rooms`, newRoom, {
         headers: {
           'Content-Type': 'application/json',
-          // 'X-CSRF-TOKEN': res.data.csrfToken,
+          // 'X-CSRF-TOKEN': res.data.csrfToken, //ここ自分で設定する可能性大
           // 他の必要なヘッダーがあれば追加
         }
       });
