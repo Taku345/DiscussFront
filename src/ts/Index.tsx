@@ -10,7 +10,6 @@ import LeftDrawer, { DrawerHeader } from './components/LeftDrawer';
 import { Box, CssBaseline } from '@mui/material';
 import LoginTest from './components/LoginTest';
 import axios from 'axios';
-import Rooms from './components/Rooms';
 
 const Index: React.FC = () => {
 
