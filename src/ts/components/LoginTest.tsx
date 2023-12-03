@@ -26,12 +26,12 @@ export default function LoginTest() {
   }
   const logout = () => { }
   const getUsers = () => {
-    http.get<User[]>(`${import.meta.env.VITE_API_URL}/api/users`).then((res: AxiosResponse<User[]>) => {
+    http.get<User[]>(`/api/users`).then((res: AxiosResponse<User[]>) => {
       setUsers(res.data);
     })
   }
   const getUsersSecure = () => {
-    http.get<User[]>(`${import.meta.env.VITE_API_URL}/api/users-secure`).then((res: AxiosResponse<User[]>) => {
+    http.get<User[]>(`/api/users-secure`).then((res: AxiosResponse<User[]>) => {
       setUsers(res.data);
     })
   }
@@ -39,17 +39,17 @@ export default function LoginTest() {
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
-  const storeRoom = async (e: any) => {
+  const storeRoom = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     const newRoom = {
-      user_id: 1,
-      name: 'react11/29ルーム作成テスト',
-      description: 'reactルーム作成テスト説明文',
-      started_at: new Date().toLocaleString('sv-SE'),
-      finished_at: new Date().toLocaleString('sv-SE'),
+      "user_id": 1,
+      "name": 'react12/3ルーム作成テスト',
+      "description": 'reactルーム作成テスト説明文',
+      "started_at": new Date().toLocaleString('sv-SE'),
+      "finished_at": new Date().toLocaleString('sv-SE'),
     }
     try {
-      const res: AxiosResponse<Room> = await axios.post<Room>(`${import.meta.env.VITE_API_URL}/api/rooms`, newRoom, {
+      const res: AxiosResponse<Room> = await http.post<Room>(`${import.meta.env.VITE_API_URL}/api/rooms`, newRoom, {
         headers: {
           'Content-Type': 'application/json',
           // 'X-CSRF-TOKEN': res.data.csrfToken, //ここ自分で設定する可能性大
@@ -95,3 +95,4 @@ export default function LoginTest() {
     </div>
   );
 }
+
