@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { Room } from '../../../types/apiTypes';
 import { RoomFilterList } from '../../../types/types';
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initRoomFilterList = createAsyncThunk<Room[]>(
   'initRoomFilterList/get',
