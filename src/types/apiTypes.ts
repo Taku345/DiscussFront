@@ -18,7 +18,7 @@ export class Room {
   finished_at: string = '';
   created_at: string = '';
   updated_at: string = '';
-  deleted_at: Boolean | null = null; // もしnullを許容する場合
+  deleted_at: boolean | null = null; // もしnullを許容する場合
 }
 
 export class User {
@@ -30,7 +30,7 @@ export class User {
   remember_token: string = '';
   created_at: string = '';
   updated_at: string = '';
-  deleted_at: Boolean | null = null;
+  deleted_at: boolean | null = null;
 }
 
 

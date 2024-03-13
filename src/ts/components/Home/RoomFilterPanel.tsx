@@ -1,8 +1,8 @@
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 import { ChangeEvent } from 'react'
-import { sortByOptions, statusOptions } from '../../types/types';
-import { useAppDispatch, useAppSelector } from "../store/index";
-import { changedFilter } from "../store/modules/roomFilterList"
+import { sortByOptions, statusOptions } from '../../../types/types';
+import { useAppDispatch, useAppSelector } from "../../store/index";
+import { changedFilter } from "../../store/modules/roomFilterList"
 
 export default function RoomFilterPanel() {
 

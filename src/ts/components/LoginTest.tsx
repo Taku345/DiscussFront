@@ -1,37 +1,32 @@
 import { useState } from 'react';
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
+import { axiosAPI } from '../api/axiosAPI';
 
 import { Room, User } from '../../types/apiTypes';
 
 export default function LoginTest() {
-
-  const http = axios.create({
-    baseURL: `${import.meta.env.VITE_API_URL}`,
-    withCredentials: true,
-    withXSRFToken: true
-  });
 
   const [email, setEmail] = useState('test@test.com');
   const [password, setPassword] = useState('password');
   const [users, setUsers] = useState<User[]>([]);
 
   const login = () => {
-    http.get('/sanctum/csrf-cookie').then((res) => {
+    axiosAPI.get('/sanctum/csrf-cookie').then((res) => {
       console.log("自分のログGET/sanctum/csrf-cookie", res)
       console.log('自分のログ', email, password, res.data.csrfToken)
-      http.post('/api/login', { email, password }).then((res) => {
+      axiosAPI.post('/api/login', { email, password }).then((res) => {
         console.log("自分のログ:post res", res);
       })
     })
   }
   const logout = () => { }
   const getUsers = () => {
-    http.get<User[]>(`/api/users`).then((res: AxiosResponse<User[]>) => {
+    axiosAPI.get<User[]>(`/api/users`).then((res: AxiosResponse<User[]>) => {
       setUsers(res.data);
     })
   }
   const getUsersSecure = () => {
-    http.get<User[]>(`/api/users-secure`).then((res: AxiosResponse<User[]>) => {
+    axiosAPI.get<User[]>(`/api/users-secure`).then((res: AxiosResponse<User[]>) => {
       setUsers(res.data);
     })
   }
@@ -49,7 +44,7 @@ export default function LoginTest() {
       "finished_at": new Date().toLocaleString('sv-SE'),
     }
     try {
-      const res: AxiosResponse<Room> = await http.post<Room>(`${import.meta.env.VITE_API_URL}/api/rooms`, newRoom, {
+      const res: AxiosResponse<Room> = await axiosAPI.post<Room>(`${import.meta.env.VITE_API_URL}/api/rooms`, newRoom, {
         headers: {
           'Content-Type': 'application/json',
           // 'X-CSRF-TOKEN': res.data.csrfToken, //ここ自分で設定する可能性大

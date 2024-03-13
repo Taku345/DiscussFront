@@ -18,8 +18,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { Link } from '@inertiajs/react';
-
+import './LeftDrawer.scss'
+import { Login } from './Login';
 
 const drawerWidth = 240;
 
@@ -106,10 +106,10 @@ export default function LeftDrawer() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box className="left-drawer" sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} sx={{ backgroundColor: 'pink' }}>
-        <Toolbar>
+        <Toolbar className='tool-bar'>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -122,29 +122,16 @@ export default function LeftDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+          <Box className="header" >
             <Typography variant="h4" noWrap component="div" >
               Discuss
             </Typography>
             <Typography variant='subtitle2' noWrap component="div" pl={3} pb='5px'>
-              ディスカッション専用のオープングループチャット　哲学・社会問題などについて議論を深めよう
+              ディスカッション専用のオープングループチャット  哲学・社会問題などについて議論を深めよう
             </Typography>
-            <>
-              {/* <Link
-                href={route('login')}
-                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-              >
-                Log in
-              </Link>
 
-              <Link
-                href={route('register')}
-                className="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-              >
-                Register
-              </Link> */}
-            </>
           </Box>
+          <Login />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>

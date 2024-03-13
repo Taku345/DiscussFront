@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { useAppDispatch, useAppSelector } from '../store';
-import { initRoomFilterList } from '../store/modules/roomFilterList';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { initRoomFilterList } from '../../store/modules/roomFilterList';
 
 const columns: GridColDef[] = [
   {
