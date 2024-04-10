@@ -2,11 +2,12 @@ import axios, { AxiosResponse } from 'axios';
 import { Room } from '../../../types/apiTypes';
 import { RoomFilterList } from '../../../types/types';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { axiosAPI } from '../../api/axiosAPI'
 
 const initRoomFilterList = createAsyncThunk<Room[]>(
   'initRoomFilterList/get',
   async (_payload) => {
-    const res: AxiosResponse<Room[]> = await axios.get<Room[]>(`${import.meta.env.VITE_API_URL}/api/rooms`);
+    const res: AxiosResponse<Room[]> = await axiosAPI.get<Room[]>(`${import.meta.env.VITE_API_URL}/api/rooms`);
     return res.data;
   }
 )

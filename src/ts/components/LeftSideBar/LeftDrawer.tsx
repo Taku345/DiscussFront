@@ -20,6 +20,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import './LeftDrawer.scss'
 import { Login } from './Login';
+import { Outlet } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -191,6 +192,7 @@ export default function LeftDrawer() {
           ))}
         </List>
       </Drawer>
+      <Outlet />
     </Box >
   );
 }

@@ -11,7 +11,7 @@ export class RoomFilter {
   status: string = '開始前';
   keyword: string = '';
   sortBy: string = '人数';
-};
+}
 
 export class RoomFilterList {
   filter: RoomFilter = new RoomFilter();

@@ -10,7 +10,7 @@ export default function LoginTest() {
   const [password, setPassword] = useState('password');
   const [users, setUsers] = useState<User[]>([]);
 
-  const login = () => {
+  const login = (): void => {
     axiosAPI.get('/sanctum/csrf-cookie').then((res) => {
       console.log("自分のログGET/sanctum/csrf-cookie", res)
       console.log('自分のログ', email, password, res.data.csrfToken)
@@ -19,7 +19,11 @@ export default function LoginTest() {
       })
     })
   }
-  const logout = () => { }
+  const logout = () => {
+    axiosAPI.post('/api/logout').then((res) => {
+      console.log(res);
+    })
+  }
   const getUsers = () => {
     axiosAPI.get<User[]>(`/api/users`).then((res: AxiosResponse<User[]>) => {
       setUsers(res.data);
