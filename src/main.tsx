@@ -6,11 +6,13 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './ts/store'
 import Router from './ts/Router.tsx'
+import { CssBaseline } from '@mui/material'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
-    <BrowserRouter> {/*BrowserRouterで囲む*/}
+    <BrowserRouter>
       <React.StrictMode>
+        {/* <CssBaseline /> TODO: ここでcss効いているか確認する */}
         <Router />
         {/* <Index /> */}
       </React.StrictMode>

@@ -3,6 +3,7 @@ import { AxiosResponse } from 'axios';
 import { axiosAPI } from '../api/axiosAPI';
 
 import { Room, User } from '../../types/apiTypes';
+import { DrawerHeader } from './LeftSideBar/LeftDrawer';
 
 export default function LoginTest() {
 
@@ -22,20 +23,26 @@ export default function LoginTest() {
   const logout = () => {
     axiosAPI.post('/api/logout').then((res) => {
       console.log(res);
+      document.cookie = "XSRF-TOKEN=; max-age=0";
     })
   }
+
   const getUsers = () => {
     axiosAPI.get<User[]>(`/api/users`).then((res: AxiosResponse<User[]>) => {
       setUsers(res.data);
     })
   }
+
   const getUsersSecure = () => {
     axiosAPI.get<User[]>(`/api/users-secure`).then((res: AxiosResponse<User[]>) => {
       setUsers(res.data);
     })
   }
+
   const reset = () => { setUsers([]) }
+
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
+
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
   const storeRoom = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -65,7 +72,8 @@ export default function LoginTest() {
   };
 
   return (
-    <div className="App">
+    <div>
+      <DrawerHeader />
       <nav>
         <button onClick={login}>ログイン</button>
         <button onClick={logout}>ログアウト</button>

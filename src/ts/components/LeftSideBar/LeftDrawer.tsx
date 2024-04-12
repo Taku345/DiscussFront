@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -20,7 +21,10 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import './LeftDrawer.scss'
 import { Login } from './Login';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+import { axiosAPI } from '../../api/axiosAPI';
+import { User } from '../../../types/apiTypes';
+import { AxiosError, AxiosResponse } from 'axios';
 
 const drawerWidth = 240;
 
@@ -49,7 +53,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  padding: theme.spacing(0, 1),
+  padding: theme.spacing(5, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
@@ -106,6 +110,21 @@ export default function LeftDrawer() {
     setOpen(false);
   };
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // ログイン処理があった場合はリダイレクトする前提にしよう
+    const loginCheck = async (): Promise<AxiosResponse> => {
+      return await axiosAPI.get<User>(`/api/user`);
+    }
+    loginCheck().then(() => {
+      setIsLoggedIn(true)
+    }).catch(() => {
+      setIsLoggedIn(false)
+    });
+
+  }, []);
+
   return (
     <Box className="left-drawer" sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -125,14 +144,16 @@ export default function LeftDrawer() {
           </IconButton>
           <Box className="header" >
             <Typography variant="h4" noWrap component="div" >
-              Discuss
+              <Link to="/">
+                <div className='py-3'>Discuss</div>
+                {/* TODO:tailwindの適用法を復習 */}
+              </Link>{" "}
             </Typography>
             <Typography variant='subtitle2' noWrap component="div" pl={3} pb='5px'>
               ディスカッション専用のオープングループチャット  哲学・社会問題などについて議論を深めよう
             </Typography>
-
           </Box>
-          <Login />
+          {isLoggedIn ? <Login /> : null}
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>

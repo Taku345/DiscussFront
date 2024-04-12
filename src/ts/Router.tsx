@@ -6,6 +6,7 @@ import { Box, CssBaseline } from '@mui/material';
 import LoginTest from './components/LoginTest';
 import Home from './components/Home/Home';
 import { NotFound } from './components/NotFound';
+import Login from './components/Login/Login';
 
 const Router: React.FC = () => {
   return (
@@ -16,9 +17,10 @@ const Router: React.FC = () => {
           {/* <Route path="/" element={<DrawerHeader />}> */}
 
           {/* DrawerHeaderはRouteに一つしかコンポーネントを指定できないっぽいので、
-          HomeとかLoginTestとかの中にいれる必要があるかも？ */}
+          HomeとかLoginTestとかの中にいれる必要があるかも？思案する */}
 
-          <Route path="home" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="login" element={<Login />} />
           <Route path="logintest" element={<LoginTest />} />
           {/* </Route> */}
         </Route>
